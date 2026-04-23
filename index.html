@@ -21,9 +21,8 @@
           </p>
         </section>
         <nav class="step-nav step-nav--scroll" role="tablist" aria-label="메인 탭">
-          <button class="step-pill is-active" role="tab" aria-selected="true" aria-controls="panel-sos" id="tab-sos" data-step="sos">SOS</button>
-          <button class="step-pill" role="tab" aria-selected="false" aria-controls="panel-safety" id="tab-safety" data-step="safety">사전교육</button>
-          <button class="step-pill" role="tab" aria-selected="false" aria-controls="panel-notice" id="tab-notice" data-step="notice">여행 준비</button>
+          <button class="step-pill is-active" role="tab" aria-selected="true" aria-controls="panel-safety" id="tab-safety" data-step="safety">사전교육</button>
+          <button class="step-pill" role="tab" aria-selected="false" aria-controls="panel-notice" id="tab-notice" data-step="notice">여행준비</button>
           <button class="step-pill" role="tab" aria-selected="false" aria-controls="panel-move" id="tab-move" data-step="move">이동안내</button>
           <button class="step-pill" role="tab" aria-selected="false" aria-controls="panel-hotel" id="tab-hotel" data-step="hotel">숙소안내</button>
           <button class="step-pill" role="tab" aria-selected="false" aria-controls="panel-activity" id="tab-activity" data-step="activity">체험활동</button>
@@ -47,16 +46,6 @@
           <div class="card-grid" id="noticeInlineBoard"></div>
         </section>
 
-        <section class="step-panel" id="panel-sos" role="tabpanel" aria-labelledby="tab-sos" hidden>
-          <h2 class="section-title">SOS</h2>
-          <p class="section-lead">긴급 상황에서는 바로 보고하고 지시를 따르세요.</p>
-          <div class="ios-panel">
-            <h3 class="cards-section-title">긴급 연락 안내</h3>
-            <p class="placeholder-text">전화번호를 누르면 바로 전화 연결이 가능합니다.</p>
-            <div id="sosContactsList"></div>
-          </div>
-        </section>
-
         <section class="step-panel" id="panel-move" role="tabpanel" aria-labelledby="tab-move" hidden>
           <h2 class="section-title">이동안내</h2>
           <div class="card-grid" id="moveInlineCards"></div>
@@ -77,19 +66,9 @@
             <article class="ios-panel activity-overview-card">
               <h3 class="cards-section-title">1일차 활동</h3>
               <div class="activity-unit">
-                <h4 class="panel-heading">1. 루지체험</h4>
+                <h4 class="panel-heading">1. 롯데월드</h4>
                 <div class="activity-overview-body">
-                  <div class="activity-photo activity-photo--placeholder" role="img" aria-label="루지체험 이미지 준비중">이미지 준비중</div>
-                  <div class="activity-overview-copy">
-                    <p class="placeholder-text">트랙을 따라 직접 주행하며 속도 조절과 코너링을 경험하는 체험형 활동입니다.</p>
-                    <p class="panel-desc">⚠️ 유의사항: 안전장비 착용, 장난 금지, 속도 조절, 앞사람과 거리 유지</p>
-                  </div>
-                </div>
-              </div>
-              <div class="activity-unit">
-                <h4 class="panel-heading">2. 롯데월드</h4>
-                <div class="activity-overview-body">
-                  <div class="activity-photo activity-photo--placeholder" role="img" aria-label="롯데월드 이미지 준비중">이미지 준비중</div>
+                  <div class="activity-photo activity-photo--placeholder" role="img" data-activity-image="lotteworld" aria-label="롯데월드 이미지 준비중">이미지 준비중</div>
                   <div class="activity-overview-copy">
                     <p class="placeholder-text">조별로 주요 어트랙션과 시설을 체험하며 자유시간을 운영하는 활동입니다.</p>
                     <p class="panel-desc">⚠️ 유의사항: 조별 이동, 탑승시간 준수, 위험 행동 금지, 연락 두절 금지</p>
@@ -97,9 +76,19 @@
                 </div>
               </div>
               <div class="activity-unit">
+                <h4 class="panel-heading">2. 루지체험</h4>
+                <div class="activity-overview-body">
+                  <div class="activity-photo activity-photo--placeholder" role="img" data-activity-image="luge" aria-label="루지체험 이미지 준비중">이미지 준비중</div>
+                  <div class="activity-overview-copy">
+                    <p class="placeholder-text">트랙을 따라 직접 주행하며 속도 조절과 코너링을 경험하는 체험형 활동입니다.</p>
+                    <p class="panel-desc">⚠️ 유의사항: 안전장비 착용, 장난 금지, 속도 조절, 앞사람과 거리 유지</p>
+                  </div>
+                </div>
+              </div>
+              <div class="activity-unit">
                 <h4 class="panel-heading">3. 레크리에이션</h4>
                 <div class="activity-overview-body">
-                  <div class="activity-photo activity-photo--placeholder" role="img" aria-label="레크리에이션 이미지 준비중">이미지 준비중</div>
+                  <div class="activity-photo activity-photo--placeholder" role="img" data-activity-image="recreation" aria-label="레크리에이션 이미지 준비중">이미지 준비중</div>
                   <div class="activity-overview-copy">
                     <p class="placeholder-text">포레스트홀에서 장기자랑과 참여형 프로그램으로 반별 친목을 다지는 시간입니다.</p>
                     <p class="panel-desc">⚠️ 유의사항: 질서 있게 이동, 무대 주변 안전선 준수, 개인 물품 분실 주의</p>
@@ -109,11 +98,11 @@
             </article>
 
             <article class="ios-panel activity-overview-card">
-              <h3 class="cards-section-title">2일차 활동</h3>
+              <h3 class="cards-section-title">2, 3일차 활동</h3>
               <div class="activity-unit">
                 <h4 class="panel-heading">1. 송도해상케이블카</h4>
                 <div class="activity-overview-body">
-                  <div class="activity-photo activity-photo--placeholder" role="img" aria-label="송도해상케이블카 이미지 준비중">이미지 준비중</div>
+                  <div class="activity-photo activity-photo--placeholder" role="img" data-activity-image="cablecar" aria-label="송도해상케이블카 이미지 준비중">이미지 준비중</div>
                   <div class="activity-overview-copy">
                     <p class="placeholder-text">바다 전망을 감상하며 이동하는 프로그램으로 부산 대표 해상 체험 코스입니다.</p>
                     <p class="panel-desc">⚠️ 유의사항: 탑승 중 장난 금지, 문과 창문 기대지 않기, 자리 이동 금지</p>
@@ -123,7 +112,7 @@
               <div class="activity-unit">
                 <h4 class="panel-heading">2. 흰여울문화마을</h4>
                 <div class="activity-overview-body">
-                  <div class="activity-photo activity-photo--placeholder" role="img" aria-label="흰여울문화마을 이미지 준비중">이미지 준비중</div>
+                  <div class="activity-photo activity-photo--placeholder" role="img" data-activity-image="whiteyeoul" aria-label="흰여울문화마을 이미지 준비중">이미지 준비중</div>
                   <div class="activity-overview-copy">
                     <p class="placeholder-text">해안길과 문화 공간을 탐방하며 부산 지역 문화를 체험하는 도보 중심 활동입니다.</p>
                     <p class="panel-desc">⚠️ 유의사항: 조별 이동, 안전 구역 이탈 금지, 집합 시간 엄수</p>
@@ -133,24 +122,30 @@
               <div class="activity-unit">
                 <h4 class="panel-heading">3. 요트체험</h4>
                 <div class="activity-overview-body">
-                  <div class="activity-photo activity-photo--placeholder" role="img" aria-label="요트체험 이미지 준비중">이미지 준비중</div>
+                  <div class="activity-photo activity-photo--placeholder" role="img" data-activity-image="yacht" aria-label="요트체험 이미지 준비중">이미지 준비중</div>
                   <div class="activity-overview-copy">
                     <p class="placeholder-text">팀별 탑승으로 해상 코스를 체험하며 바다 활동 안전수칙을 익히는 프로그램입니다.</p>
                     <p class="panel-desc">⚠️ 유의사항: 구명조끼 착용, 뛰지 않기, 멀미 시 즉시 알리기</p>
                   </div>
                 </div>
               </div>
-            </article>
-
-            <article class="ios-panel activity-overview-card">
-              <h3 class="cards-section-title">3일차 활동</h3>
               <div class="activity-unit">
-                <h4 class="panel-heading">1. 블루라인 해변열차</h4>
+                <h4 class="panel-heading">4. 블루라인 해변열차</h4>
                 <div class="activity-overview-body">
-                  <div class="activity-photo activity-photo--placeholder" role="img" aria-label="블루라인 해변열차 이미지 준비중">이미지 준비중</div>
+                  <div class="activity-photo activity-photo--placeholder" role="img" data-activity-image="blueline" aria-label="블루라인 해변열차 이미지 준비중">이미지 준비중</div>
                   <div class="activity-overview-copy">
                     <p class="placeholder-text">송정-미포 구간을 이동하며 해변 경관을 감상하는 마무리 체험 프로그램입니다.</p>
                     <p class="panel-desc">⚠️ 유의사항: 승하차 질서 준수, 선로 접근 금지, 단독 이동 금지</p>
+                  </div>
+                </div>
+              </div>
+              <div class="activity-unit">
+                <h4 class="panel-heading">5. 해운대 견학</h4>
+                <div class="activity-overview-body">
+                  <div class="activity-photo activity-photo--placeholder" role="img" data-activity-image="haeundae" aria-label="해운대 견학 이미지 준비중">이미지 준비중</div>
+                  <div class="activity-overview-copy">
+                    <p class="placeholder-text">해운대 해변 일대를 조별로 둘러보며 자유식과 함께 부산 현장 분위기를 체험하는 활동입니다.</p>
+                    <p class="panel-desc">⚠️ 유의사항: 조별 이동, 집합 시간 엄수, 안전 구역 이탈 금지</p>
                   </div>
                 </div>
               </div>

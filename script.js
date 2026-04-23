@@ -28,40 +28,56 @@ const teamSchedule = {
     trainToBusan: "SRT309",
     trainToDongtan: "SRT348",
     highlights: {
-      day1: "롯데월드, 루지, 레크레이션",
-      day2: "송도해상케이블카, 국제시장, 흰여울문화마을, 요트",
-      day3: "블루라인해변열차, 해운대 전통시장, 귀가",
+      day1: "롯데월드, 루지, 장기자랑",
+      day2: "송도해상케이블카, 요트, 흰여울문화마을",
+      day3: "해운대 자유시간, 귀가",
     },
     day1: [
-      { time: "06:30", activity: "동탄역 도착 및 인원점검" },
-      { time: "07:23~09:46", activity: "동탄 출발 → 부산 도착", note: "SRT309" },
-      { time: "11:00~", activity: "점심식사(자유식)", note: "롯데월드" },
-      { time: "~15:00", activity: "롯데월드 어드벤처 자유시간" },
-      { time: "15:10~17:00", activity: "루지(2회)" },
-      { time: "17:00~17:40", activity: "숙소 이동 및 방배정" },
-      { time: "17:40~19:00", activity: "저녁식사", note: "호운정" },
-      { time: "19:00~21:00", activity: "레크레이션 및 장기자랑", note: "포레스트홀" },
-      { time: "21:00~21:30", activity: "숙소 이동" },
-      { time: "21:30~22:30", activity: "인원 확인 후 취침" },
+      { time: "06:30", activity: "동탄역 집결 및 인원 점검", category: "move" },
+      { time: "07:23~09:46", activity: "SRT309 동탄역→부산역", category: "train" },
+      { time: "09:46~10:20", activity: "도보 이동 후 버스 탑승", category: "move" },
+      { time: "10:20~11:00", activity: "부산역→롯데월드", category: "move" },
+      { time: "11:00~15:00", activity: "롯데월드 체험 + 점심 자유식", category: "activity", photo: true },
+      { time: "15:00~15:10", activity: "롯데월드→루지 이동", category: "move" },
+      { time: "15:10~16:50", activity: "스카이라인 루지 체험", category: "activity" },
+      { time: "16:50~17:00", activity: "루지→숙소 이동", category: "move" },
+      { time: "17:00~17:40", activity: "생활안내 / 안전교육 / 입실", category: "stay" },
+      { time: "17:40~17:50", activity: "숙소→식당(호운정)", category: "move" },
+      { time: "17:50~19:00", activity: "저녁식사(제육볶음)", category: "meal" },
+      { time: "19:00~21:00", activity: "레크레이션 및 장기자랑", category: "event", note: "장소: 롯데월드 포레스트홀" },
+      { time: "21:00~21:10", activity: "숙소 이동", category: "move" },
+      { time: "21:10~22:00", activity: "정리 및 세면", category: "stay" },
+      { time: "22:00~22:30", activity: "점검", category: "stay", note: "환자 파악 / 전달사항 / 불편사항 확인" },
+      { time: "22:30", activity: "취침", category: "stay" },
     ],
     day2: [
-      { time: "07:00~08:30", activity: "기상 및 조식" },
-      { time: "09:00~12:00", activity: "송도해상케이블카" },
-      { time: "12:00~14:00", activity: "자유식", note: "국제시장" },
-      { time: "14:00~15:30", activity: "흰여울문화마을" },
-      { time: "15:40~17:00", activity: "요트체험", note: "4시 출항" },
-      { time: "17:00~19:00", activity: "저녁식사", note: "더테이블오시리아" },
-      { time: "19:30~22:00", activity: "숙소 이동 후 조별 활동 및 휴식" },
-      { time: "22:00~", activity: "정리 및 취침" },
+      { time: "06:30", activity: "기상 / 세면", category: "stay" },
+      { time: "06:50~08:10", activity: "아침식사(호텔 뷔페식)", category: "meal" },
+      { time: "08:30", activity: "출발", category: "move" },
+      { time: "09:00~09:50", activity: "숙소→송도해상케이블카", category: "move" },
+      { time: "09:50~11:30", activity: "송도해상케이블카 체험", category: "activity", photo: true },
+      { time: "11:30~12:00", activity: "이동", category: "move" },
+      { time: "12:00~14:00", activity: "국제시장·부평동 먹자골목 자유식", category: "meal" },
+      { time: "14:00~14:20", activity: "이동", category: "move" },
+      { time: "14:20~15:20", activity: "흰여울문화마을 체험", category: "activity" },
+      { time: "15:20~15:40", activity: "이동", category: "move" },
+      { time: "15:40~17:00", activity: "요트체험(영도 북항 일대)", category: "activity", photo: true },
+      { time: "17:00~17:40", activity: "이동", category: "move" },
+      { time: "17:40~18:40", activity: "저녁식사(중국식 뷔페)", category: "meal" },
+      { time: "18:50~22:00", activity: "조별활동 / 휴식 / 정리", category: "stay" },
+      { time: "22:00~22:30", activity: "점검", category: "stay" },
+      { time: "22:30", activity: "취침", category: "stay" },
     ],
     day3: [
-      { time: "06:50~08:30", activity: "기상 및 조식" },
-      { time: "09:00", activity: "짐정리 후 숙소 출발" },
-      { time: "09:30~11:00", activity: "블루라인해변열차", note: "송정-미포" },
-      { time: "11:10~14:10", activity: "자유식", note: "해운대 전통시장" },
-      { time: "15:00", activity: "부산역 도착" },
-      { time: "15:39~17:52", activity: "부산 출발 → 동탄 도착", note: "SRT348" },
-      { time: "18:00", activity: "동탄역 도착 및 인원점검 후 개별해산" },
+      { time: "07:00", activity: "기상 / 세면", category: "stay" },
+      { time: "07:30~08:30", activity: "아침식사(호텔 뷔페식)", category: "meal" },
+      { time: "08:30", activity: "출발", category: "move" },
+      { time: "09:10~10:40", activity: "블루라인 해변열차 체험", category: "activity" },
+      { time: "10:40~14:10", activity: "해운대해수욕장 견학 + 자유식", category: "activity", photo: true },
+      { time: "14:10~14:50", activity: "해운대→부산역 이동", category: "move" },
+      { time: "14:50~15:39", activity: "인원 점검 및 탑승 준비", category: "move" },
+      { time: "15:39~17:52", activity: "SRT348 부산역→동탄역", category: "train" },
+      { time: "17:52~18:00", activity: "동탄역 도착 / 종례 후 해산", category: "return" },
     ],
   },
   B: {
@@ -69,48 +85,77 @@ const teamSchedule = {
     trainToBusan: "SRT311",
     trainToDongtan: "SRT352",
     highlights: {
-      day1: "롯데월드, 루지, 레크레이션",
-      day2: "블루라인해변열차, 해운대 전통시장, 요트, 흰여울문화마을",
-      day3: "송도 해상 케이블카, 국제시장, 귀가",
+      day1: "롯데월드, 루지, 장기자랑",
+      day2: "해운대해수욕장, 요트, 흰여울문화마을",
+      day3: "송도해상케이블카, 국제시장, 귀가",
     },
     day1: [
-      { time: "07:00", activity: "동탄역 도착 및 인원점검" },
-      { time: "07:43~09:56", activity: "동탄 출발 → 부산 도착", note: "SRT311" },
-      { time: "11:00~", activity: "점심식사(자유식)", note: "롯데월드" },
-      { time: "~15:00", activity: "롯데월드 어드벤처 자유시간" },
-      { time: "15:20~17:00", activity: "루지(2회)" },
-      { time: "17:00~17:40", activity: "숙소 이동 및 방배정" },
-      { time: "17:40~19:00", activity: "저녁식사", note: "더테이블오시리아" },
-      { time: "19:00~21:00", activity: "레크레이션 및 장기자랑", note: "포레스트홀" },
-      { time: "21:00~21:30", activity: "숙소 이동" },
-      { time: "21:30~22:30", activity: "인원 확인 후 취침" },
+      { time: "07:00", activity: "동탄역 집결 및 인원 점검", category: "move" },
+      { time: "07:43~09:56", activity: "SRT311 동탄역→부산역", category: "train" },
+      { time: "09:56~10:30", activity: "도보 이동 후 버스 탑승", category: "move" },
+      { time: "10:30~11:10", activity: "부산역→롯데월드", category: "move" },
+      { time: "11:10~15:10", activity: "롯데월드 체험 + 점심 자유식", category: "activity", photo: true },
+      { time: "15:10~15:20", activity: "롯데월드→루지 이동", category: "move" },
+      { time: "15:20~17:00", activity: "스카이라인 루지 체험", category: "activity" },
+      { time: "17:00~17:40", activity: "생활안내 / 안전교육 / 입실", category: "stay" },
+      { time: "17:40~17:50", activity: "숙소→식당(더테이블 오시리아)", category: "move" },
+      { time: "17:50~19:00", activity: "저녁식사(중국식 뷔페)", category: "meal" },
+      { time: "19:00~21:00", activity: "레크레이션 및 장기자랑", category: "event", note: "장소: 롯데월드 포레스트홀" },
+      { time: "21:00~21:10", activity: "숙소 이동", category: "move" },
+      { time: "21:10~22:00", activity: "정리 및 세면", category: "stay" },
+      { time: "22:00~22:30", activity: "점검", category: "stay", note: "환자 파악 / 전달사항 / 불편사항 확인" },
+      { time: "22:30", activity: "취침", category: "stay" },
     ],
     day2: [
-      { time: "07:00~08:30", activity: "기상 및 조식" },
-      { time: "09:00~12:00", activity: "블루라인해변열차", note: "송정-미포" },
-      { time: "12:00~13:30", activity: "자유식", note: "해운대 전통시장" },
-      { time: "14:00~15:30", activity: "요트체험", note: "2시 출항" },
-      { time: "15:30~17:00", activity: "흰여울문화마을" },
-      { time: "17:00~19:00", activity: "저녁식사", note: "호운정" },
-      { time: "19:30~22:00", activity: "숙소 이동 후 조별 활동 및 휴식" },
-      { time: "22:00~", activity: "정리 및 취침" },
+      { time: "06:30", activity: "기상 / 세면 / 방정리", category: "stay" },
+      { time: "06:50~08:10", activity: "아침식사(호텔 뷔페식)", category: "meal" },
+      { time: "08:30", activity: "출발", category: "move" },
+      { time: "09:30~10:30", activity: "블루라인 해변열차 체험", category: "activity" },
+      { time: "10:30~13:00", activity: "해운대해수욕장 견학 + 자유식", category: "activity", photo: true },
+      { time: "13:40~15:00", activity: "요트체험(영도 북항 일대)", category: "activity", photo: true },
+      { time: "15:20~17:00", activity: "흰여울문화마을 체험", category: "activity" },
+      { time: "17:40~18:40", activity: "저녁식사(제육볶음)", category: "meal" },
+      { time: "18:50~22:00", activity: "조별활동 / 휴식 / 정리", category: "stay" },
+      { time: "22:00~22:30", activity: "점검", category: "stay" },
+      { time: "22:30", activity: "취침", category: "stay" },
     ],
     day3: [
-      { time: "06:50~08:30", activity: "기상 및 조식" },
-      { time: "09:00", activity: "짐정리 후 숙소 출발" },
-      { time: "10:00~12:00", activity: "송도 해상 케이블카" },
-      { time: "12:10~15:00", activity: "자유식", note: "국제시장" },
-      { time: "15:20", activity: "부산역 도착" },
-      { time: "15:59~18:29", activity: "부산 출발 → 동탄 도착", note: "SRT352" },
-      { time: "18:29", activity: "동탄역 도착 및 인원점검 후 개별해산" },
+      { time: "07:00", activity: "기상 / 세면", category: "stay" },
+      { time: "07:30~08:30", activity: "아침식사(호텔 뷔페식)", category: "meal" },
+      { time: "08:30", activity: "출발", category: "move" },
+      { time: "09:50~11:50", activity: "송도해상케이블카 체험", category: "activity", photo: true },
+      { time: "12:10~15:00", activity: "국제시장·부평동 자유식", category: "meal" },
+      { time: "15:10~15:59", activity: "인원 점검 및 탑승 준비", category: "move" },
+      { time: "15:59~18:29", activity: "SRT352 부산역→동탄역", category: "train" },
+      { time: "18:29~18:40", activity: "동탄역 도착 / 종례 후 해산", category: "return" },
     ],
   },
 };
 
 const dayMessages = {
-  day1: { date: "5/18(월)", lead: "A팀: 1, 2, 3, 4, 9, 12반 / B팀: 5, 6, 7, 8, 10, 11반" },
-  day2: { date: "5/19(화)", lead: "A팀: 1, 2, 3, 4, 9, 12반 / B팀: 5, 6, 7, 8, 10, 11반" },
-  day3: { date: "5/20(수)", lead: "A팀: 1, 2, 3, 4, 9, 12반 / B팀: 5, 6, 7, 8, 10, 11반" },
+  day1: { date: "첫째 날 일정 (5.18 월)", lead: "A팀: 1, 2, 3, 4, 9, 12반 / B팀: 5, 6, 7, 8, 10, 11반" },
+  day2: { date: "둘째 날 일정 (5.19 화)", lead: "A팀: 1, 2, 3, 4, 9, 12반 / B팀: 5, 6, 7, 8, 10, 11반" },
+  day3: { date: "셋째 날 일정 (5.20 수)", lead: "A팀: 1, 2, 3, 4, 9, 12반 / B팀: 5, 6, 7, 8, 10, 11반" },
+};
+
+const dayHighlightCards = {
+  day1: {
+    A: ["집결", "SRT", "도착", "롯데월드·점심", "루지", "저녁식사", "레크리에이션", "숙소"],
+    B: ["집결", "SRT", "도착", "롯데월드·점심", "루지", "저녁식사", "레크리에이션", "숙소"],
+  },
+  day2: {
+    A: ["출발", "케이블카", "점심자유식", "흰여울", "요트", "저녁식사", "숙소"],
+    B: ["출발", "해변열차", "해운대·점심", "요트", "흰여울", "저녁식사", "숙소"],
+  },
+  day3: {
+    A: ["출발", "해변열차", "해운대·점심", "부산역 이동", "SRT", "귀가"],
+    B: ["출발", "케이블카", "국제시장 자유식", "부산역 이동", "SRT", "귀가"],
+  },
+};
+
+const teamReturnArrivalTimes = {
+  A: "17:52",
+  B: "18:29",
 };
 
 const teamGatherTimes = {
@@ -142,17 +187,40 @@ const presentationSlides = {
   ],
   activity: [
     { title: "1일차 활동" },
-    { title: "2일차 활동" },
-    { title: "3일차 활동" },
+    { title: "2, 3일차 활동" },
   ],
 };
 
-const SAFETY_SLIDE_BASE_PATH = "./수학여행 사전교육";
+const SAFETY_SLIDE_BASE_DIR_CANDIDATES = [
+  "./수학여행 사전교육",
+  "../수학여행 사전교육",
+  "./사전교육",
+  "../사전교육",
+];
+const SAFETY_SLIDE_EXT_CANDIDATES = ["jpg", "JPG", "jpeg", "JPEG", "png", "PNG", "webp", "WEBP"];
+const ACTIVITY_IMAGE_BASE_DIR_CANDIDATES = [
+  "./체험활동 이미지",
+  "../체험활동 이미지",
+  "./체험활동이미지",
+  "../체험활동이미지",
+];
+const ACTIVITY_IMAGE_EXT_CANDIDATES = ["png", "PNG", "jpg", "JPG", "jpeg", "JPEG", "webp", "WEBP"];
+const activityImageNameCandidates = {
+  luge: ["루지체험", "루지"],
+  lotteworld: ["롯데월드", "롯데 월드"],
+  recreation: ["레크리에이션", "레크레이션"],
+  cablecar: ["송도해상케이블카", "송도해상 케이블카", "송도케이블카"],
+  whiteyeoul: ["흰여울문화마을", "흰여울 문화마을"],
+  yacht: ["요트체험", "요트 체험", "요트"],
+  blueline: ["블루라인해변열차", "블루라인 해변열차", "해변열차"],
+  haeundae: ["해운대견학", "해운대 견학", "해운대"],
+};
+
 const safetyPresentationFlow = Array.from({ length: 27 }, (_, index) => {
   const slideNo = index + 1;
   return {
     type: "image",
-    src: `${SAFETY_SLIDE_BASE_PATH}/${slideNo}.jpg`,
+    slideNo,
     alt: `사전교육 슬라이드 ${slideNo}`,
   };
 });
@@ -168,6 +236,11 @@ for (let i = 1; i <= 12; i += 1) {
   const team = teamByClass[className];
   const gatherTime = teamGatherTimes[team];
   const teamTrain = teamSchedule[team];
+  const dayFlow = {
+    day1: (dayHighlightCards.day1?.[team] || []).join(" → "),
+    day2: (dayHighlightCards.day2?.[team] || []).join(" → "),
+    day3: (dayHighlightCards.day3?.[team] || []).join(" → "),
+  };
   classData[className] = {
     team,
     teacher: `담임교사 ${i}`,
@@ -176,9 +249,11 @@ for (let i = 1; i <= 12; i += 1) {
     gatherMove: `${gatherTime} → ${travelInfo.transportNow} 탑승`,
     trainToBusan: teamTrain.trainToBusan,
     trainToDongtan: teamTrain.trainToDongtan,
+    returnArrival: teamReturnArrivalTimes[team],
     rooms: [`${700 + i}호 4명`, `${710 + i}호 4명`, `${720 + i}호 4명`],
     groups: ["1조: 1~5번", "2조: 6~10번", "3조: 11~15번"],
     notes: ["집합 시간 10분 전 도착", "개인 상비약 필수 지참", "문제 발생 시 즉시 교사에게 보고"],
+    dayFlow,
   };
 }
 
@@ -517,6 +592,95 @@ function goPresentationSlide(delta) {
   renderPresentationSlide();
 }
 
+function getSafetySlideCandidates(slideNo) {
+  const candidates = [];
+  SAFETY_SLIDE_BASE_DIR_CANDIDATES.forEach((dir) => {
+    SAFETY_SLIDE_EXT_CANDIDATES.forEach((ext) => {
+      candidates.push(`${dir}/${slideNo}.${ext}`);
+    });
+  });
+  return candidates;
+}
+
+function getActivityImageCandidates(activityKey) {
+  const nameCandidates = activityImageNameCandidates[activityKey] || [];
+  const candidates = [];
+  ACTIVITY_IMAGE_BASE_DIR_CANDIDATES.forEach((dir) => {
+    nameCandidates.forEach((name) => {
+      ACTIVITY_IMAGE_EXT_CANDIDATES.forEach((ext) => {
+        candidates.push(`${dir}/${name}.${ext}`);
+      });
+    });
+  });
+  return candidates;
+}
+
+function applyActivityImageSource(photoEl, candidates) {
+  if (!photoEl || !candidates.length) return;
+  let index = 0;
+
+  const tryNext = () => {
+    if (index >= candidates.length) {
+      return;
+    }
+
+    const src = candidates[index];
+    index += 1;
+    const probe = new Image();
+    probe.onload = () => {
+      photoEl.style.backgroundImage = `url("${src}")`;
+      photoEl.style.backgroundSize = "cover";
+      photoEl.style.backgroundPosition = "center";
+      photoEl.style.backgroundRepeat = "no-repeat";
+      photoEl.classList.remove("activity-photo--placeholder");
+      photoEl.textContent = "";
+      const label = photoEl.getAttribute("aria-label") || "";
+      photoEl.setAttribute("aria-label", label.replace(" 이미지 준비중", "") || "활동 사진");
+    };
+    probe.onerror = tryNext;
+    probe.src = src;
+  };
+
+  tryNext();
+}
+
+function renderActivityImages() {
+  const nodes = document.querySelectorAll("[data-activity-image]");
+  nodes.forEach((node) => {
+    const key = node.getAttribute("data-activity-image");
+    if (!key) return;
+    const candidates = getActivityImageCandidates(key);
+    applyActivityImageSource(node, candidates);
+  });
+}
+
+function applySafetySlideSource(imageEl, placeholderEl, candidates) {
+  if (!imageEl || !placeholderEl) return;
+  let index = 0;
+
+  const tryNext = () => {
+    if (index >= candidates.length) {
+      imageEl.hidden = true;
+      imageEl.removeAttribute("src");
+      placeholderEl.hidden = false;
+      return;
+    }
+    imageEl.src = candidates[index];
+    index += 1;
+  };
+
+  imageEl.onload = () => {
+    imageEl.hidden = false;
+    placeholderEl.hidden = true;
+  };
+
+  imageEl.onerror = () => {
+    tryNext();
+  };
+
+  tryNext();
+}
+
 function renderSafetyPresentationStep() {
   if (!safetyPresentationState.open || !safetyPresentationContent || !safetyPresentationPage) return;
   const step = safetyPresentationFlow[safetyPresentationState.index];
@@ -528,8 +692,13 @@ function renderSafetyPresentationStep() {
   if (safetyPresentationPrev) safetyPresentationPrev.disabled = safetyPresentationState.index === 0;
   if (safetyPresentationNext) safetyPresentationNext.disabled = safetyPresentationState.index === total - 1;
   safetyPresentationContent.innerHTML = `
-    <img class="presentation-viewer-image" src="${step.src}" alt="${step.alt}" loading="eager" />
+    <img class="presentation-viewer-image" id="safetyPresentationImage" alt="${step.alt}" loading="eager" hidden />
+    <p class="presentation-viewer-image-placeholder" id="safetyPresentationImagePlaceholder">이미지 준비중</p>
   `;
+  const imageEl = safetyPresentationContent.querySelector("#safetyPresentationImage");
+  const placeholderEl = safetyPresentationContent.querySelector("#safetyPresentationImagePlaceholder");
+  const candidates = getSafetySlideCandidates(step.slideNo);
+  applySafetySlideSource(imageEl, placeholderEl, candidates);
 }
 
 function openSafetyPresentation() {
@@ -593,14 +762,32 @@ function renderClassSelector() {
 function renderTeamCard(teamKey, dayKey) {
   const team = teamSchedule[teamKey];
   const schedule = team[dayKey];
+  const highlights = dayHighlightCards[dayKey]?.[teamKey] || [];
+  const badgeClass = `team-badge--${teamKey}`;
+  const highlightClass = teamKey === "A" ? "schedule-highlight-chip--A" : "schedule-highlight-chip--B";
+  const arrowClass = teamKey === "A" ? "schedule-flow-arrow--A" : "schedule-flow-arrow--B";
+  const categoryLabel = {
+    move: "이동",
+    meal: "식사",
+    event: "행사",
+    stay: "숙소",
+    train: "열차",
+    activity: "체험",
+    return: "귀가",
+  };
   const rows = schedule
-    .map((item) => {
+    .map((item, index) => {
+      const isGatherTime = dayKey === "day1" && index === 0;
+      const isReturnTime = dayKey === "day3" && item.category === "return";
+      const tag = item.category ? `<span class="schedule-tag schedule-tag--${item.category}">${categoryLabel[item.category] || item.category}</span>` : "";
+      const photoChip = item.photo ? `<span class="schedule-photo-chip">📸 단체사진 촬영 포함</span>` : "";
       const note = item.note ? `<p class="schedule-note">${item.note}</p>` : "";
       return `
-        <li class="schedule-item">
-          <p class="schedule-time">${item.time}</p>
+        <li class="schedule-item${item.photo ? " schedule-item--photo" : ""}">
+          <p class="schedule-time${isGatherTime || isReturnTime ? " schedule-time--gather" : ""}">${item.time}</p>
           <div class="schedule-content">
-            <p class="schedule-activity">${item.activity}</p>
+            <p class="schedule-activity">${tag}${item.activity}</p>
+            ${photoChip}
             ${note}
           </div>
         </li>
@@ -611,9 +798,21 @@ function renderTeamCard(teamKey, dayKey) {
   return `
     <article class="ios-panel team-schedule-card team-schedule-card--${teamKey}">
       <h4 class="cards-section-title">
-        <span class="team-badge team-badge--${teamKey}">${team.label}</span>
+        <span class="team-badge ${badgeClass}">${team.label}</span>
         <span class="team-train-meta">왕복 열차: ${team.trainToBusan} / ${team.trainToDongtan}</span>
       </h4>
+      <div class="schedule-highlights schedule-highlights--team">
+        <div class="schedule-highlights-grid">
+          ${highlights
+            .map(
+              (item, index) =>
+                `<span class="schedule-highlight-chip ${highlightClass}">${item}</span>${
+                  index < highlights.length - 1 ? `<span class="schedule-flow-arrow ${arrowClass}" aria-hidden="true">→</span>` : ""
+                }`
+            )
+            .join("")}
+        </div>
+      </div>
       <ol class="schedule-list">${rows}</ol>
     </article>
   `;
@@ -645,11 +844,21 @@ function renderScheduleDay(dayKey) {
     scheduleMessage.innerHTML = `<span class="team-badge team-badge--A">A팀</span>: 1, 2, 3, 4, 9, 12반 &nbsp; <span class="team-badge team-badge--B">B팀</span>: 5, 6, 7, 8, 10, 11반`;
   }
   if (scheduleContent) {
+    const returnCard =
+      dayKey === "day3"
+        ? `
+      <article class="ios-panel return-arrival-card">
+        <h4 class="cards-section-title">🚄 동탄역 도착 예정</h4>
+        <p class="placeholder-text"><strong>A팀</strong> 17:52 &nbsp; | &nbsp; <strong>B팀</strong> 18:29</p>
+      </article>
+    `
+        : "";
     scheduleContent.innerHTML = `
       <div class="team-schedule-grid">
         ${renderTeamCard("A", dayKey)}
         ${renderTeamCard("B", dayKey)}
       </div>
+      ${returnCard}
     `;
   }
 }
@@ -991,25 +1200,24 @@ function renderClassInfo() {
   const listBlock = (items) => `<ul class="class-info-list">${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
   classInfoCards.innerHTML = [
     row(
-      "담임교사 안내",
-      `<p class="placeholder-text class-info-meta"><strong>담임교사</strong>: ${data.teacher}</p>
-       <p class="placeholder-text class-info-meta"><strong>연락처</strong>: ${data.phone}</p>`
-    ),
-    row(
       "소속 팀 / 열차 정보",
       `<p class="placeholder-text class-info-meta"><strong>소속 팀</strong>: <span class="team-badge team-badge--${data.team}">${team.label}</span></p>
-       <p class="placeholder-text class-info-meta"><strong>집결 시간</strong>: ${data.gatherTime}</p>
+       <p class="placeholder-text class-info-meta"><strong>집결 시간</strong>: <span class="class-info-emphasis">${data.gatherTime}</span></p>
        <p class="placeholder-text class-info-meta"><strong>가는 열차</strong>: ${data.trainToBusan}</p>
-       <p class="placeholder-text class-info-meta"><strong>오는 열차</strong>: ${data.trainToDongtan}</p>`
-    ),
-    row("집합 / 이동 안내", `<p class="placeholder-text">${data.gatherMove}</p>`),
-    row("객실표", listBlock(data.rooms)),
-    row("조 편성", listBlock(data.groups)),
-    row(
-      "우리 팀 날짜별 주요 일정 요약",
-      listBlock([`1일차 핵심: ${team.highlights.day1}`, `2일차 핵심: ${team.highlights.day2}`, `3일차 핵심: ${team.highlights.day3}`])
+       <p class="placeholder-text class-info-meta"><strong>오는 열차</strong>: ${data.trainToDongtan}</p>
+       <p class="placeholder-text class-info-meta"><strong>3일차 동탄역 도착 예정</strong>: <span class="class-info-emphasis">${data.returnArrival}</span></p>`
     ),
     row("전달사항", listBlock(data.notes)),
+    row(
+      "우리 팀 날짜별 주요 일정 요약",
+      listBlock([
+        `1일차 흐름: ${data.dayFlow.day1}`,
+        `2일차 흐름: ${data.dayFlow.day2}`,
+        `3일차 흐름: ${data.dayFlow.day3}`,
+      ])
+    ),
+    row("조 편성", listBlock(data.groups)),
+    row("객실표", listBlock(data.rooms)),
   ].join("");
 }
 
@@ -1263,6 +1471,7 @@ function initStaticTexts() {
   renderInlineGuideCards(hotelInlineCards, hotelInlineGuideCards);
   renderNoticeInlineBoard();
   renderSafetyInlineCards();
+  renderActivityImages();
   renderScheduleDay(activeScheduleDay);
 }
 
@@ -1274,7 +1483,7 @@ function init() {
   renderClassSelector();
   renderClassInfo();
   bindEvents();
-  switchTab("sos");
+  switchTab("safety");
 }
 
 init();

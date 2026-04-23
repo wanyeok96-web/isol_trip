@@ -5954,6 +5954,9 @@ body.glacial-era-modal-open {
   min-width: 0;
   padding: 10px 8px;
   font-size: 16px;
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 
 @media (max-width: 640px) {
@@ -5968,6 +5971,11 @@ body.glacial-era-modal-open {
 
 .class-info-meta:last-child {
   margin-bottom: 0;
+}
+
+.class-info-emphasis {
+  color: #ff3b30;
+  font-weight: 800;
 }
 
 .class-info-list {
@@ -6005,8 +6013,8 @@ body.glacial-era-modal-open {
 }
 
 .team-schedule-card--B {
-  background: rgba(255, 204, 0, 0.16);
-  border-color: rgba(255, 204, 0, 0.42);
+  background: rgba(52, 199, 89, 0.12);
+  border-color: rgba(52, 199, 89, 0.34);
 }
 
 .team-badge {
@@ -6028,8 +6036,8 @@ body.glacial-era-modal-open {
 }
 
 .team-badge--B {
-  background: rgba(255, 204, 0, 0.32);
-  color: #7a5a00;
+  background: rgba(52, 199, 89, 0.24);
+  color: #11613a;
 }
 
 .team-train-meta {
@@ -6065,8 +6073,56 @@ body.glacial-era-modal-open {
   line-height: 1.45;
 }
 
+.schedule-time--gather {
+  color: #ff3b30;
+  font-weight: 800;
+}
+
 .schedule-content {
   min-width: 0;
+}
+
+.schedule-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 6px;
+  padding: 1px 8px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.schedule-tag--move,
+.schedule-tag--train {
+  background: rgba(0, 122, 255, 0.12);
+  color: var(--ios-blue);
+}
+
+.schedule-tag--meal {
+  background: rgba(142, 199, 31, 0.2);
+  color: #3d5f09;
+}
+
+.schedule-tag--event {
+  background: rgba(255, 149, 0, 0.18);
+  color: #8a4d00;
+}
+
+.schedule-tag--stay {
+  background: rgba(118, 118, 128, 0.16);
+  color: #3a3a3c;
+}
+
+.schedule-tag--activity {
+  background: rgba(52, 199, 89, 0.16);
+  color: #11613a;
+}
+
+.schedule-tag--return {
+  background: rgba(10, 28, 74, 0.18);
+  color: #10204a;
 }
 
 .schedule-activity {
@@ -6082,6 +6138,87 @@ body.glacial-era-modal-open {
   font-size: 13px;
   font-weight: 500;
   color: var(--text-secondary);
+}
+
+.schedule-item--photo {
+  background: rgba(175, 82, 222, 0.08);
+  border-radius: var(--radius-field);
+  padding: 10px 8px;
+}
+
+.schedule-photo-chip {
+  display: inline-flex;
+  margin-top: 4px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: rgba(175, 82, 222, 0.2);
+  color: #5d2a80;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.schedule-highlights {
+  margin-top: 8px;
+}
+
+.schedule-highlights--team {
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
+.schedule-highlights-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.schedule-highlight-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(0, 122, 255, 0.08);
+  border: 1px solid rgba(0, 122, 255, 0.18);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.schedule-highlight-chip--A {
+  background: rgba(0, 122, 255, 0.1);
+  border-color: rgba(0, 122, 255, 0.22);
+  color: #004a9f;
+}
+
+.schedule-highlight-chip--B {
+  background: rgba(52, 199, 89, 0.14);
+  border-color: rgba(52, 199, 89, 0.3);
+  color: #11613a;
+}
+
+.schedule-flow-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0 1px;
+}
+
+.schedule-flow-arrow--A {
+  color: #0a63c5;
+}
+
+.schedule-flow-arrow--B {
+  color: #1f8d55;
+}
+
+.return-arrival-card {
+  margin-top: var(--space-sm);
+  background: rgba(10, 28, 74, 0.08);
+  border-color: rgba(10, 28, 74, 0.24);
 }
 
 @media (max-width: 480px) {
@@ -6348,6 +6485,18 @@ body.glacial-era-modal-open {
   height: 100%;
   object-fit: contain;
   display: block;
+}
+
+.presentation-viewer-image-placeholder {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(22px, 3.5vw, 36px);
+  font-weight: 800;
+  color: var(--text-secondary);
 }
 
 .presentation-viewer-title {
