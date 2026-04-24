@@ -144,12 +144,12 @@ const dayHighlightCards = {
     B: ["집결", "SRT", "도착", "롯데월드·점심", "루지", "저녁식사", "레크리에이션", "숙소"],
   },
   day2: {
-    A: ["출발", "케이블카", "점심자유식", "흰여울", "요트", "저녁식사", "숙소"],
+    A: ["출발", "케이블카", "국제시장·점심", "흰여울", "요트", "저녁식사", "숙소"],
     B: ["출발", "해변열차", "해운대·점심", "요트", "흰여울", "저녁식사", "숙소"],
   },
   day3: {
     A: ["출발", "해변열차", "해운대·점심", "부산역 이동", "SRT", "귀가"],
-    B: ["출발", "케이블카", "국제시장 자유식", "부산역 이동", "SRT", "귀가"],
+    B: ["출발", "케이블카", "국제시장·점심", "부산역 이동", "SRT", "귀가"],
   },
 };
 
@@ -191,13 +191,6 @@ const presentationSlides = {
   ],
 };
 
-const SAFETY_SLIDE_BASE_DIR_CANDIDATES = [
-  "./수학여행 사전교육",
-  "../수학여행 사전교육",
-  "./사전교육",
-  "../사전교육",
-];
-const SAFETY_SLIDE_EXT_CANDIDATES = ["jpg", "JPG", "jpeg", "JPEG", "png", "PNG", "webp", "WEBP"];
 const ACTIVITY_IMAGE_BASE_DIR_CANDIDATES = [
   "./체험활동 이미지",
   "../체험활동 이미지",
@@ -210,20 +203,12 @@ const activityImageNameCandidates = {
   lotteworld: ["롯데월드", "롯데 월드"],
   recreation: ["레크리에이션", "레크레이션"],
   cablecar: ["송도해상케이블카", "송도해상 케이블카", "송도케이블카"],
+  gukje: ["국제시장", "국제 시장"],
   whiteyeoul: ["흰여울문화마을", "흰여울 문화마을"],
   yacht: ["요트체험", "요트 체험", "요트"],
   blueline: ["블루라인해변열차", "블루라인 해변열차", "해변열차"],
   haeundae: ["해운대견학", "해운대 견학", "해운대"],
 };
-
-const safetyPresentationFlow = Array.from({ length: 27 }, (_, index) => {
-  const slideNo = index + 1;
-  return {
-    type: "image",
-    slideNo,
-    alt: `사전교육 슬라이드 ${slideNo}`,
-  };
-});
 
 const teamByClass = {
   "1반": "A", "2반": "A", "3반": "A", "4반": "A", "9반": "A", "12반": "A",
@@ -304,7 +289,7 @@ const modalData = {
   },
   "sos-contacts": {
     title: "긴급 연락 안내",
-    sections: [{ heading: "비상 연락처", items: [`담임교사 연락처: ${emergencyContacts.homeroomTeacher}`, `부장교사 연락처: ${emergencyContacts.headTeacher}`, `비상연락망: ${emergencyContacts.emergencyNetwork}`, `경찰: ${emergencyContacts.police}`, `소방/구급: ${emergencyContacts.fire}`] }],
+    sections: [{ heading: "비상 연락처", items: ["담임교사 연락처: 출발 전 배부된 연락망에서 확인", `부장교사 연락처: ${emergencyContacts.headTeacher}`, `비상연락망: ${emergencyContacts.emergencyNetwork}`, `경찰: ${emergencyContacts.police}`, `소방/구급: ${emergencyContacts.fire}`] }],
   },
   "move-gather": {
     title: "집결",
@@ -372,13 +357,6 @@ const modalData = {
   },
 };
 
-const moveInlineGuideCards = [
-  { id: "move-gather", icon: "📍", desc: "A/B팀 집결 시간과 장소 확인" },
-  { id: "move-srt", icon: "🚄", desc: "객차·좌석 및 하차 전 체크" },
-  { id: "move-bus", icon: "🚌", desc: "차량 배정 및 안전벨트 수칙" },
-  { id: "move-attendance", icon: "🧑‍🏫", desc: "출발 직전 반별 인원 최종 확인" },
-];
-
 const hotelInlineGuideCards = [
   {
     id: "hotel-facility",
@@ -412,11 +390,11 @@ const scheduleDate = document.getElementById("scheduleDate");
 const scheduleMessage = document.getElementById("scheduleMessage");
 const scheduleContent = document.getElementById("scheduleContent");
 const daySwitchButtons = [...document.querySelectorAll(".day-switch-btn")];
-const openSafetyPresentationButton = document.getElementById("openSafetyPresentation");
 const openActivityPresentationButton = document.getElementById("openActivityPresentation");
 const noticeInlineBoard = document.getElementById("noticeInlineBoard");
-const safetyInlineCards = document.getElementById("safetyInlineCards");
-const moveInlineCards = document.getElementById("moveInlineCards");
+const safetyScheduleSummary = document.getElementById("safetyScheduleSummary");
+const safetyEducationCards = document.getElementById("safetyEducationCards");
+const safetyRuleCards = document.getElementById("safetyRuleCards");
 const hotelInlineCards = document.getElementById("hotelInlineCards");
 const presentationRoot = document.getElementById("presentationRoot");
 const presentationPage = document.getElementById("presentationPage");
@@ -424,19 +402,32 @@ const presentationImage = document.getElementById("presentationImage");
 const presentationImagePlaceholder = document.getElementById("presentationImagePlaceholder");
 const presentationPrev = document.getElementById("presentationPrev");
 const presentationNext = document.getElementById("presentationNext");
-const safetyPresentationRoot = document.getElementById("safetyPresentationRoot");
-const safetyPresentationContent = document.getElementById("safetyPresentationContent");
-const safetyPresentationPage = document.getElementById("safetyPresentationPage");
-const safetyPresentationPrev = document.getElementById("safetyPresentationPrev");
-const safetyPresentationNext = document.getElementById("safetyPresentationNext");
 const PREP_CHECKLIST_STORAGE_KEY = "fieldTripPrepChecklistV1";
 const TRAVEL_SELF_CHECK_STORAGE_KEY = "fieldTripSelfCheckV1";
 
 let activeClassName = null;
 let lastFocusedElement = null;
 let presentationState = { open: false, group: null, index: 0, lastFocusedElement: null };
-let safetyPresentationState = { open: false, index: 0, lastFocusedElement: null };
 let activeScheduleDay = "day1";
+const PRE_EDUCATION_IMAGE_DIR = "./수학여행 사전교육";
+const PRE_EDUCATION_VIDEO_URL = "https://youtu.be/bSdbBCLUFxc?si=rQHQ2X6dXlsheztq";
+const PRE_EDUCATION_INTRO_IMAGE = encodeURI(`${PRE_EDUCATION_IMAGE_DIR}/소개.png`);
+const buildPreEducationImageRange = (start, end) =>
+  Array.from({ length: end - start + 1 }, (_, index) => encodeURI(`${PRE_EDUCATION_IMAGE_DIR}/${start + index}.png`));
+const safetyInlineSlides = {
+  city: [
+    encodeURI(`${PRE_EDUCATION_IMAGE_DIR}/1.png`),
+    PRE_EDUCATION_INTRO_IMAGE,
+    ...buildPreEducationImageRange(2, 16),
+  ],
+  activity: buildPreEducationImageRange(17, 28),
+  rules: buildPreEducationImageRange(29, 40),
+};
+const safetyInlineSlideIndex = {
+  city: 0,
+  activity: 0,
+  rules: 0,
+};
 
 function getPrepChecklistState() {
   try {
@@ -577,7 +568,7 @@ function closePresentation() {
   presentationState.open = false;
   presentationRoot.hidden = true;
   presentationRoot.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = safetyPresentationState.open || !modalRoot.hidden ? "hidden" : "";
+  document.body.style.overflow = !modalRoot.hidden ? "hidden" : "";
   if (presentationState.lastFocusedElement && typeof presentationState.lastFocusedElement.focus === "function") {
     presentationState.lastFocusedElement.focus();
   }
@@ -590,16 +581,6 @@ function goPresentationSlide(delta) {
   if (nextIndex < 0 || nextIndex >= slides.length) return;
   presentationState.index = nextIndex;
   renderPresentationSlide();
-}
-
-function getSafetySlideCandidates(slideNo) {
-  const candidates = [];
-  SAFETY_SLIDE_BASE_DIR_CANDIDATES.forEach((dir) => {
-    SAFETY_SLIDE_EXT_CANDIDATES.forEach((ext) => {
-      candidates.push(`${dir}/${slideNo}.${ext}`);
-    });
-  });
-  return candidates;
 }
 
 function getActivityImageCandidates(activityKey) {
@@ -654,86 +635,6 @@ function renderActivityImages() {
   });
 }
 
-function applySafetySlideSource(imageEl, placeholderEl, candidates) {
-  if (!imageEl || !placeholderEl) return;
-  let index = 0;
-
-  const tryNext = () => {
-    if (index >= candidates.length) {
-      imageEl.hidden = true;
-      imageEl.removeAttribute("src");
-      placeholderEl.hidden = false;
-      return;
-    }
-    imageEl.src = candidates[index];
-    index += 1;
-  };
-
-  imageEl.onload = () => {
-    imageEl.hidden = false;
-    placeholderEl.hidden = true;
-  };
-
-  imageEl.onerror = () => {
-    tryNext();
-  };
-
-  tryNext();
-}
-
-function renderSafetyPresentationStep() {
-  if (!safetyPresentationState.open || !safetyPresentationContent || !safetyPresentationPage) return;
-  const step = safetyPresentationFlow[safetyPresentationState.index];
-  if (!step) return;
-
-  const current = safetyPresentationState.index + 1;
-  const total = safetyPresentationFlow.length;
-  safetyPresentationPage.textContent = `${current} / ${total}`;
-  if (safetyPresentationPrev) safetyPresentationPrev.disabled = safetyPresentationState.index === 0;
-  if (safetyPresentationNext) safetyPresentationNext.disabled = safetyPresentationState.index === total - 1;
-  safetyPresentationContent.innerHTML = `
-    <img class="presentation-viewer-image" id="safetyPresentationImage" alt="${step.alt}" loading="eager" hidden />
-    <p class="presentation-viewer-image-placeholder" id="safetyPresentationImagePlaceholder">이미지 준비중</p>
-  `;
-  const imageEl = safetyPresentationContent.querySelector("#safetyPresentationImage");
-  const placeholderEl = safetyPresentationContent.querySelector("#safetyPresentationImagePlaceholder");
-  const candidates = getSafetySlideCandidates(step.slideNo);
-  applySafetySlideSource(imageEl, placeholderEl, candidates);
-}
-
-function openSafetyPresentation() {
-  if (!safetyPresentationRoot) return;
-  safetyPresentationState = {
-    open: true,
-    index: 0,
-    lastFocusedElement: document.activeElement,
-  };
-  safetyPresentationRoot.hidden = false;
-  safetyPresentationRoot.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-  renderSafetyPresentationStep();
-  safetyPresentationNext?.focus();
-}
-
-function closeSafetyPresentation() {
-  if (!safetyPresentationRoot || !safetyPresentationState.open) return;
-  safetyPresentationState.open = false;
-  safetyPresentationRoot.hidden = true;
-  safetyPresentationRoot.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = presentationState.open || !modalRoot.hidden ? "hidden" : "";
-  if (safetyPresentationState.lastFocusedElement && typeof safetyPresentationState.lastFocusedElement.focus === "function") {
-    safetyPresentationState.lastFocusedElement.focus();
-  }
-}
-
-function goSafetyPresentationStep(delta) {
-  if (!safetyPresentationState.open) return;
-  const nextIndex = safetyPresentationState.index + delta;
-  if (nextIndex < 0 || nextIndex >= safetyPresentationFlow.length) return;
-  safetyPresentationState.index = nextIndex;
-  renderSafetyPresentationStep();
-}
-
 function openModal(modalId, sourceElement) {
   renderModal(modalId);
   lastFocusedElement = sourceElement || document.activeElement;
@@ -746,13 +647,14 @@ function openModal(modalId, sourceElement) {
 function closeModal() {
   modalRoot.hidden = true;
   modalRoot.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = presentationState.open || safetyPresentationState.open ? "hidden" : "";
+  document.body.style.overflow = presentationState.open ? "hidden" : "";
   if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
     lastFocusedElement.focus();
   }
 }
 
 function renderClassSelector() {
+  if (!classSelector) return;
   const classNames = Object.keys(classData);
   classSelector.innerHTML = classNames
     .map((name) => `<button class="koppen-chip${name === activeClassName ? " is-active" : ""}" type="button" role="tab" aria-selected="${name === activeClassName}" data-class="${name}">${name}</button>`)
@@ -780,13 +682,19 @@ function renderTeamCard(teamKey, dayKey) {
       const isGatherTime = dayKey === "day1" && index === 0;
       const isReturnTime = dayKey === "day3" && item.category === "return";
       const tag = item.category ? `<span class="schedule-tag schedule-tag--${item.category}">${categoryLabel[item.category] || item.category}</span>` : "";
+      const hasFreeMeal = /자유식/.test(item.activity);
+      const normalizedActivity = item.activity
+        .replace(/\s*\+\s*(?:점심\s*)?자유식/g, "")
+        .trim();
       const photoChip = item.photo ? `<span class="schedule-photo-chip">📸 단체사진 촬영 포함</span>` : "";
+      const freeMealChip = hasFreeMeal ? `<span class="schedule-meal-chip">🍽️ 자유식 포함</span>` : "";
       const note = item.note ? `<p class="schedule-note">${item.note}</p>` : "";
       return `
         <li class="schedule-item${item.photo ? " schedule-item--photo" : ""}">
           <p class="schedule-time${isGatherTime || isReturnTime ? " schedule-time--gather" : ""}">${item.time}</p>
           <div class="schedule-content">
-            <p class="schedule-activity">${tag}${item.activity}</p>
+            <p class="schedule-activity">${tag}${normalizedActivity}</p>
+            ${freeMealChip}
             ${photoChip}
             ${note}
           </div>
@@ -989,12 +897,14 @@ function renderNoticeInlineBoard() {
           ${selfCheckRows}
         </tbody>
       </table>
-      <p class="self-check-consent">위 내용을 점검하였으며, 규칙을 어긴 사례가 적발될 경우, 담임 선생님의 지도에 따르겠습니다.</p>
+      <p class="self-check-consent">위 내용을 점검하였습니다.<br />규칙을 어긴 사례가 적발될 경우, 담임 선생님의 지도에 따르는 것에 동의합니다.</p>
       <div class="self-check-signature-row">
         <div class="self-check-signature">
           <label class="self-check-signature-field">학번 <input type="text" class="self-check-input" placeholder="예: 20101" /></label>
           <label class="self-check-signature-field">성명 <input type="text" class="self-check-input" placeholder="이름 입력" /></label>
         </div>
+      </div>
+      <div class="self-check-download-row">
         <button type="button" class="ios-button ios-button--secondary self-check-download-btn" data-self-check-download>이미지 다운</button>
       </div>
     </article>
@@ -1142,30 +1052,57 @@ function downloadSelfCheckImage() {
 }
 
 function renderSafetyInlineCards() {
-  if (!safetyInlineCards) return;
-  const sectionIds = ["notice-medicine", "notice-restricted", "notice-dress", "notice-money", "notice-transport", "notice-hotel"];
-  const noticeSectionEmojis = {
-    "notice-medicine": "💊",
-    "notice-restricted": "🚫",
-    "notice-dress": "👟",
-    "notice-money": "💳",
-    "notice-transport": "🚌",
-    "notice-hotel": "🏨",
+  if (!safetyScheduleSummary || !safetyEducationCards || !safetyRuleCards) return;
+  const containerMap = {
+    city: safetyScheduleSummary,
+    activity: safetyEducationCards,
+    rules: safetyRuleCards,
   };
-  safetyInlineCards.innerHTML = sectionIds
-    .map((id) => {
-      const info = modalData[id];
-      if (!info) return "";
-      const items = info.sections.flatMap((section) => section.items);
-      const emoji = noticeSectionEmojis[id] || "📌";
-      return `
-        <article class="ios-panel">
-          <h3 class="cards-section-title">${emoji} ${info.title}</h3>
-          <ul class="class-info-list">${items.map((item) => `<li>${item}</li>`).join("")}</ul>
-        </article>
-      `;
-    })
-    .join("");
+  const titleMap = {
+    city: "낭만의 도시, 부산",
+    activity: "체험활동",
+    rules: "수학 여행 안전수칙",
+  };
+  const buildInlinePresentationFrame = (deckKey) => {
+    const slides = safetyInlineSlides[deckKey] || [];
+    const rawIndex = safetyInlineSlideIndex[deckKey] || 0;
+    const max = slides.length;
+    const index = max > 0 ? Math.max(0, Math.min(rawIndex, max - 1)) : 0;
+    safetyInlineSlideIndex[deckKey] = index;
+    const hasSlides = max > 0;
+    const canNavigate = max > 1;
+    const isCityIntroSlide = deckKey === "city" && hasSlides && slides[index] === PRE_EDUCATION_INTRO_IMAGE;
+    const contentMarkup = hasSlides
+      ? `<img class="safety-inline-presentation-image" src="${slides[index]}" alt="${titleMap[deckKey]}" loading="lazy" />
+         ${isCityIntroSlide
+    ? `<a class="safety-inline-video-button" href="${PRE_EDUCATION_VIDEO_URL}" target="_blank" rel="noopener noreferrer" aria-label="소개 영상 재생">▶</a>`
+    : ""}`
+      : `<p class="safety-inline-presentation-placeholder">이미지 준비중</p>`;
+    return `
+    <div class="safety-inline-carousel-wrap">
+      <button class="safety-inline-carousel-btn" type="button" data-safety-carousel="${deckKey}" data-safety-carousel-action="prev" aria-label="이전 이미지" ${canNavigate ? "" : "disabled"}>&lt;</button>
+      <article class="safety-inline-presentation">
+        <div class="safety-inline-presentation-body" role="img" aria-label="${titleMap[deckKey]} 이미지 영역">
+          ${contentMarkup}
+        </div>
+      </article>
+      <button class="safety-inline-carousel-btn" type="button" data-safety-carousel="${deckKey}" data-safety-carousel-action="next" aria-label="다음 이미지" ${canNavigate ? "" : "disabled"}>&gt;</button>
+    </div>
+  `;
+  };
+  Object.entries(containerMap).forEach(([deckKey, container]) => {
+    if (!container) return;
+    container.innerHTML = buildInlinePresentationFrame(deckKey);
+  });
+}
+
+function moveSafetyInlineSlide(deckKey, direction) {
+  const slides = safetyInlineSlides[deckKey] || [];
+  if (slides.length <= 1) return;
+  const max = slides.length;
+  const current = safetyInlineSlideIndex[deckKey] || 0;
+  safetyInlineSlideIndex[deckKey] = (current + direction + max) % max;
+  renderSafetyInlineCards();
 }
 
 function renderTopNoticeCard(targetNode, modalId) {
@@ -1185,6 +1122,7 @@ function renderTopNoticeCard(targetNode, modalId) {
 }
 
 function renderClassInfo() {
+  if (!classInfoCards) return;
   if (!activeClassName) {
     classInfoCards.innerHTML = "";
     classInfoCards.hidden = true;
@@ -1250,6 +1188,15 @@ function bindEvents() {
     button.addEventListener("click", () => openModal(button.dataset.modalId, button));
   });
 
+  document.addEventListener("click", (event) => {
+    const carouselButton = event.target.closest("[data-safety-carousel-action]");
+    if (!carouselButton) return;
+    const deckKey = carouselButton.dataset.safetyCarousel;
+    const action = carouselButton.dataset.safetyCarouselAction;
+    if (!deckKey || !action) return;
+    moveSafetyInlineSlide(deckKey, action === "next" ? 1 : -1);
+  });
+
   modalRoot.addEventListener("click", (event) => {
     if (event.target.closest("[data-modal-close]")) closeModal();
   });
@@ -1311,22 +1258,6 @@ function bindEvents() {
     });
   }
   document.addEventListener("keydown", (event) => {
-    if (safetyPresentationState.open) {
-      if (event.key === "Escape") {
-        closeSafetyPresentation();
-        return;
-      }
-      if (event.key === "ArrowRight") {
-        goSafetyPresentationStep(1);
-        return;
-      }
-      if (event.key === "ArrowLeft") {
-        goSafetyPresentationStep(-1);
-        return;
-      }
-      return;
-    }
-
     if (presentationState.open) {
       if (event.key === "Escape") {
         closePresentation();
@@ -1346,21 +1277,20 @@ function bindEvents() {
     if (event.key === "Escape" && !modalRoot.hidden) closeModal();
   });
 
-  classSelector.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-class]");
-    if (!button) return;
-    activeClassName = button.dataset.class;
-    renderClassSelector();
-    renderClassInfo();
-  });
+  if (classSelector) {
+    classSelector.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-class]");
+      if (!button) return;
+      activeClassName = button.dataset.class;
+      renderClassSelector();
+      renderClassInfo();
+    });
+  }
 
   daySwitchButtons.forEach((button) => {
     button.addEventListener("click", () => renderScheduleDay(button.dataset.scheduleDay));
   });
 
-  if (openSafetyPresentationButton) {
-    openSafetyPresentationButton.addEventListener("click", openSafetyPresentation);
-  }
   if (openActivityPresentationButton) {
     openActivityPresentationButton.addEventListener("click", () => openPresentation("activity"));
   }
@@ -1377,19 +1307,6 @@ function bindEvents() {
   }
   if (presentationNext) {
     presentationNext.addEventListener("click", () => goPresentationSlide(1));
-  }
-  if (safetyPresentationRoot) {
-    safetyPresentationRoot.addEventListener("click", (event) => {
-      if (event.target.closest("[data-safety-presentation-close]")) {
-        closeSafetyPresentation();
-      }
-    });
-  }
-  if (safetyPresentationPrev) {
-    safetyPresentationPrev.addEventListener("click", () => goSafetyPresentationStep(-1));
-  }
-  if (safetyPresentationNext) {
-    safetyPresentationNext.addEventListener("click", () => goSafetyPresentationStep(1));
   }
 }
 
@@ -1467,7 +1384,6 @@ function initStaticTexts() {
     `;
   }
 
-  renderInlineGuideCards(moveInlineCards, moveInlineGuideCards);
   renderInlineGuideCards(hotelInlineCards, hotelInlineGuideCards);
   renderNoticeInlineBoard();
   renderSafetyInlineCards();

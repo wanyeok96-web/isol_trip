@@ -22,13 +22,10 @@
         </section>
         <nav class="step-nav step-nav--scroll" role="tablist" aria-label="메인 탭">
           <button class="step-pill is-active" role="tab" aria-selected="true" aria-controls="panel-safety" id="tab-safety" data-step="safety">사전교육</button>
-          <button class="step-pill" role="tab" aria-selected="false" aria-controls="panel-notice" id="tab-notice" data-step="notice">여행준비</button>
-          <button class="step-pill" role="tab" aria-selected="false" aria-controls="panel-move" id="tab-move" data-step="move">이동안내</button>
-          <button class="step-pill" role="tab" aria-selected="false" aria-controls="panel-hotel" id="tab-hotel" data-step="hotel">숙소안내</button>
           <button class="step-pill" role="tab" aria-selected="false" aria-controls="panel-activity" id="tab-activity" data-step="activity">체험활동</button>
+          <button class="step-pill" role="tab" aria-selected="false" aria-controls="panel-hotel" id="tab-hotel" data-step="hotel">숙소안내</button>
+          <button class="step-pill" role="tab" aria-selected="false" aria-controls="panel-notice" id="tab-notice" data-step="notice">여행준비</button>
           <button class="step-pill" role="tab" aria-selected="false" aria-controls="panel-schedule" id="tab-schedule" data-step="schedule">상세일정</button>
-          <button class="step-pill" role="tab" aria-selected="false" aria-controls="panel-class" id="tab-class" data-step="class">우리반</button>
-          <button class="step-pill" role="tab" aria-selected="false" aria-controls="panel-event" id="tab-event" data-step="event">이벤트</button>
         </nav>
       </header>
 
@@ -36,19 +33,28 @@
         <section class="step-panel" id="panel-safety" role="tabpanel" aria-labelledby="tab-safety" hidden>
           <div class="section-title-row">
             <h2 class="section-title">사전교육</h2>
-            <button class="ios-button ios-button--secondary title-action-btn" type="button" id="openSafetyPresentation">발표모드</button>
           </div>
-          <div class="card-grid" id="safetyInlineCards"></div>
+          <div class="pre-education-layout">
+            <article class="ios-panel pre-education-section">
+              <div class="pre-education-head">
+                <h3 class="cards-section-title">🌆 낭만의 도시, 부산</h3>
+              </div>
+              <div class="card-grid" id="safetyScheduleSummary"></div>
+            </article>
+            <article class="ios-panel pre-education-section">
+              <h3 class="cards-section-title">🎢 체험활동</h3>
+              <div class="card-grid" id="safetyEducationCards"></div>
+            </article>
+            <article class="ios-panel pre-education-section">
+              <h3 class="cards-section-title">🛡️ 수학 여행 안전수칙</h3>
+              <div class="card-grid" id="safetyRuleCards"></div>
+            </article>
+          </div>
         </section>
 
         <section class="step-panel" id="panel-notice" role="tabpanel" aria-labelledby="tab-notice" hidden>
           <h2 class="section-title">여행 준비</h2>
           <div class="card-grid" id="noticeInlineBoard"></div>
-        </section>
-
-        <section class="step-panel" id="panel-move" role="tabpanel" aria-labelledby="tab-move" hidden>
-          <h2 class="section-title">이동안내</h2>
-          <div class="card-grid" id="moveInlineCards"></div>
         </section>
 
         <section class="step-panel" id="panel-hotel" role="tabpanel" aria-labelledby="tab-hotel" hidden>
@@ -66,11 +72,16 @@
             <article class="ios-panel activity-overview-card">
               <h3 class="cards-section-title">1일차 활동</h3>
               <div class="activity-unit">
-                <h4 class="panel-heading">1. 롯데월드</h4>
+                <h4 class="panel-heading">1. 롯데월드 <span class="activity-meta-chip activity-meta-chip--meal">🍽️ 자유식</span> <span class="activity-meta-chip activity-meta-chip--photo">📸 단체사진 촬영</span></h4>
                 <div class="activity-overview-body">
                   <div class="activity-photo activity-photo--placeholder" role="img" data-activity-image="lotteworld" aria-label="롯데월드 이미지 준비중">이미지 준비중</div>
                   <div class="activity-overview-copy">
                     <p class="placeholder-text">조별로 주요 어트랙션과 시설을 체험하며 자유시간을 운영하는 활동입니다.</p>
+                    <p class="placeholder-text activity-team-time">
+                      <span class="team-badge team-badge--A">A팀</span> 11:00~15:00
+                      <br />
+                      <span class="team-badge team-badge--B">B팀</span> 11:10~15:10
+                    </p>
                     <p class="panel-desc">⚠️ 유의사항: 조별 이동, 탑승시간 준수, 위험 행동 금지, 연락 두절 금지</p>
                   </div>
                 </div>
@@ -81,6 +92,11 @@
                   <div class="activity-photo activity-photo--placeholder" role="img" data-activity-image="luge" aria-label="루지체험 이미지 준비중">이미지 준비중</div>
                   <div class="activity-overview-copy">
                     <p class="placeholder-text">트랙을 따라 직접 주행하며 속도 조절과 코너링을 경험하는 체험형 활동입니다.</p>
+                    <p class="placeholder-text activity-team-time">
+                      <span class="team-badge team-badge--A">A팀</span> 15:10~16:50
+                      <br />
+                      <span class="team-badge team-badge--B">B팀</span> 15:20~17:00
+                    </p>
                     <p class="panel-desc">⚠️ 유의사항: 안전장비 착용, 장난 금지, 속도 조절, 앞사람과 거리 유지</p>
                   </div>
                 </div>
@@ -91,6 +107,11 @@
                   <div class="activity-photo activity-photo--placeholder" role="img" data-activity-image="recreation" aria-label="레크리에이션 이미지 준비중">이미지 준비중</div>
                   <div class="activity-overview-copy">
                     <p class="placeholder-text">포레스트홀에서 장기자랑과 참여형 프로그램으로 반별 친목을 다지는 시간입니다.</p>
+                    <p class="placeholder-text activity-team-time">
+                      <span class="team-badge team-badge--A">A팀</span> 19:00~21:00
+                      <br />
+                      <span class="team-badge team-badge--B">B팀</span> 19:00~21:00
+                    </p>
                     <p class="panel-desc">⚠️ 유의사항: 질서 있게 이동, 무대 주변 안전선 준수, 개인 물품 분실 주의</p>
                   </div>
                 </div>
@@ -100,51 +121,91 @@
             <article class="ios-panel activity-overview-card">
               <h3 class="cards-section-title">2, 3일차 활동</h3>
               <div class="activity-unit">
-                <h4 class="panel-heading">1. 송도해상케이블카</h4>
+                <h4 class="panel-heading">1. 송도해상케이블카 <span class="activity-meta-chip activity-meta-chip--photo">📸 단체사진 촬영</span></h4>
                 <div class="activity-overview-body">
                   <div class="activity-photo activity-photo--placeholder" role="img" data-activity-image="cablecar" aria-label="송도해상케이블카 이미지 준비중">이미지 준비중</div>
                   <div class="activity-overview-copy">
                     <p class="placeholder-text">바다 전망을 감상하며 이동하는 프로그램으로 부산 대표 해상 체험 코스입니다.</p>
+                    <p class="placeholder-text activity-team-time">
+                      <span class="team-badge team-badge--A">A팀</span> 2일차 09:50~11:30
+                      <br />
+                      <span class="team-badge team-badge--B">B팀</span> 3일차 09:50~11:50
+                    </p>
                     <p class="panel-desc">⚠️ 유의사항: 탑승 중 장난 금지, 문과 창문 기대지 않기, 자리 이동 금지</p>
                   </div>
                 </div>
               </div>
               <div class="activity-unit">
-                <h4 class="panel-heading">2. 흰여울문화마을</h4>
+                <h4 class="panel-heading">2. 국제시장 <span class="activity-meta-chip activity-meta-chip--meal">🍽️ 자유식</span></h4>
+                <div class="activity-overview-body">
+                  <div class="activity-photo activity-photo--placeholder" role="img" data-activity-image="gukje" aria-label="국제시장 이미지 준비중">이미지 준비중</div>
+                  <div class="activity-overview-copy">
+                    <p class="placeholder-text">국제시장·부평동 먹자골목 일대를 둘러보며 자유식과 지역 문화를 체험하는 활동입니다.</p>
+                    <p class="placeholder-text activity-team-time">
+                      <span class="team-badge team-badge--A">A팀</span> 2일차 12:00~14:00
+                      <br />
+                      <span class="team-badge team-badge--B">B팀</span> 3일차 12:10~15:00
+                    </p>
+                    <p class="panel-desc">⚠️ 유의사항: 조별 이동, 집합 시간 엄수, 개인 소지품 분실 주의</p>
+                  </div>
+                </div>
+              </div>
+              <div class="activity-unit">
+                <h4 class="panel-heading">3. 흰여울문화마을</h4>
                 <div class="activity-overview-body">
                   <div class="activity-photo activity-photo--placeholder" role="img" data-activity-image="whiteyeoul" aria-label="흰여울문화마을 이미지 준비중">이미지 준비중</div>
                   <div class="activity-overview-copy">
                     <p class="placeholder-text">해안길과 문화 공간을 탐방하며 부산 지역 문화를 체험하는 도보 중심 활동입니다.</p>
+                    <p class="placeholder-text activity-team-time">
+                      <span class="team-badge team-badge--A">A팀</span> 2일차 14:20~15:20
+                      <br />
+                      <span class="team-badge team-badge--B">B팀</span> 2일차 15:20~17:00
+                    </p>
                     <p class="panel-desc">⚠️ 유의사항: 조별 이동, 안전 구역 이탈 금지, 집합 시간 엄수</p>
                   </div>
                 </div>
               </div>
               <div class="activity-unit">
-                <h4 class="panel-heading">3. 요트체험</h4>
+                <h4 class="panel-heading">4. 요트체험 <span class="activity-meta-chip activity-meta-chip--photo">📸 단체사진 촬영</span></h4>
                 <div class="activity-overview-body">
                   <div class="activity-photo activity-photo--placeholder" role="img" data-activity-image="yacht" aria-label="요트체험 이미지 준비중">이미지 준비중</div>
                   <div class="activity-overview-copy">
                     <p class="placeholder-text">팀별 탑승으로 해상 코스를 체험하며 바다 활동 안전수칙을 익히는 프로그램입니다.</p>
+                    <p class="placeholder-text activity-team-time">
+                      <span class="team-badge team-badge--A">A팀</span> 2일차 15:40~17:00
+                      <br />
+                      <span class="team-badge team-badge--B">B팀</span> 2일차 13:40~15:00
+                    </p>
                     <p class="panel-desc">⚠️ 유의사항: 구명조끼 착용, 뛰지 않기, 멀미 시 즉시 알리기</p>
                   </div>
                 </div>
               </div>
               <div class="activity-unit">
-                <h4 class="panel-heading">4. 블루라인 해변열차</h4>
+                <h4 class="panel-heading">5. 블루라인 해변열차</h4>
                 <div class="activity-overview-body">
                   <div class="activity-photo activity-photo--placeholder" role="img" data-activity-image="blueline" aria-label="블루라인 해변열차 이미지 준비중">이미지 준비중</div>
                   <div class="activity-overview-copy">
                     <p class="placeholder-text">송정-미포 구간을 이동하며 해변 경관을 감상하는 마무리 체험 프로그램입니다.</p>
+                    <p class="placeholder-text activity-team-time">
+                      <span class="team-badge team-badge--A">A팀</span> 3일차 09:10~10:40
+                      <br />
+                      <span class="team-badge team-badge--B">B팀</span> 2일차 09:30~10:30
+                    </p>
                     <p class="panel-desc">⚠️ 유의사항: 승하차 질서 준수, 선로 접근 금지, 단독 이동 금지</p>
                   </div>
                 </div>
               </div>
               <div class="activity-unit">
-                <h4 class="panel-heading">5. 해운대 견학</h4>
+                <h4 class="panel-heading">6. 해운대 견학 <span class="activity-meta-chip activity-meta-chip--meal">🍽️ 자유식</span> <span class="activity-meta-chip activity-meta-chip--photo">📸 단체사진 촬영</span></h4>
                 <div class="activity-overview-body">
                   <div class="activity-photo activity-photo--placeholder" role="img" data-activity-image="haeundae" aria-label="해운대 견학 이미지 준비중">이미지 준비중</div>
                   <div class="activity-overview-copy">
                     <p class="placeholder-text">해운대 해변 일대를 조별로 둘러보며 자유식과 함께 부산 현장 분위기를 체험하는 활동입니다.</p>
+                    <p class="placeholder-text activity-team-time">
+                      <span class="team-badge team-badge--A">A팀</span> 3일차 10:40~14:10
+                      <br />
+                      <span class="team-badge team-badge--B">B팀</span> 2일차 10:30~13:00
+                    </p>
                     <p class="panel-desc">⚠️ 유의사항: 조별 이동, 집합 시간 엄수, 안전 구역 이탈 금지</p>
                   </div>
                 </div>
@@ -164,34 +225,9 @@
             <h3 class="cards-section-title" id="scheduleDate">5/18(월)</h3>
             <p class="placeholder-text" id="scheduleMessage"></p>
             <div id="scheduleContent" class="schedule-day-wrap"></div>
-            <div class="card-grid" style="margin-top: 12px;">
-              <button class="ios-button ios-button--secondary" type="button" data-go-step="notice">여행 준비로 이동</button>
-              <button class="ios-button ios-button--secondary" type="button" data-go-step="class">우리반 보기</button>
-              <button class="ios-button ios-button--secondary" type="button" data-go-step="notice">여행 준비 보기</button>
-            </div>
           </div>
         </section>
 
-        <section class="step-panel" id="panel-class" role="tabpanel" aria-labelledby="tab-class" hidden>
-          <h2 class="section-title">우리반</h2>
-          <p class="section-lead section-lead--tight">반 버튼을 누르면 소속 팀, 집결 시간, 열차 정보, 객실표, 전달사항이 펼쳐집니다.</p>
-          <div class="koppen-deck" id="classSelector" role="tablist" aria-label="반 선택"></div>
-          <div class="card-grid" style="margin-top: 12px;" id="classInfoCards" hidden></div>
-        </section>
-
-        <section class="step-panel" id="panel-event" role="tabpanel" aria-labelledby="tab-event" hidden>
-          <h2 class="section-title">이벤트</h2>
-          <div class="ios-panel">
-            <h3 class="cards-section-title">이벤트 콘텐츠는 차후 업데이트 예정입니다.</h3>
-            <p class="placeholder-text">수학여행 전 / 여행 중 다양한 이벤트가 공개됩니다.</p>
-            <p class="title-section-emojis" aria-hidden="true">🎁 📸 🎯 🎉</p>
-            <div class="card-grid" style="margin-top: 12px;">
-              <button class="ios-button ios-button--secondary" type="button" data-go-step="notice">여행 준비로 이동</button>
-              <button class="ios-button ios-button--secondary" type="button" data-go-step="class">우리반 보기</button>
-              <button class="ios-button ios-button--secondary" type="button" data-go-step="schedule">상세일정 보기</button>
-            </div>
-          </div>
-        </section>
       </main>
     </div>
 
@@ -226,21 +262,6 @@
           <img class="presentation-image" id="presentationImage" alt="발표 슬라이드 이미지" hidden />
           <p class="presentation-image-placeholder" id="presentationImagePlaceholder">이미지 준비중</p>
         </div>
-      </section>
-    </div>
-
-    <div class="presentation-viewer-root" id="safetyPresentationRoot" hidden aria-hidden="true">
-      <div class="presentation-viewer-backdrop" data-safety-presentation-close></div>
-      <section class="presentation-viewer-card" role="dialog" aria-modal="true" aria-label="사전교육 발표모드">
-        <div class="presentation-viewer-topbar">
-          <div class="presentation-viewer-nav" aria-live="polite">
-            <button class="presentation-nav-button" type="button" id="safetyPresentationPrev" aria-label="이전 슬라이드">&lt;</button>
-            <p class="presentation-viewer-page" id="safetyPresentationPage">1 / 1</p>
-            <button class="presentation-nav-button" type="button" id="safetyPresentationNext" aria-label="다음 슬라이드">&gt;</button>
-          </div>
-          <button class="presentation-close" type="button" data-safety-presentation-close>종료 ✕</button>
-        </div>
-        <div class="presentation-viewer-content" id="safetyPresentationContent"></div>
       </section>
     </div>
 
